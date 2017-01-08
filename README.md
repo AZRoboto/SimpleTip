@@ -1,2 +1,2 @@
 # SimpleTip
-Concept Site - Angular 2 Sampling
+Concept Site - Angular 2 Sampling, created January 2017

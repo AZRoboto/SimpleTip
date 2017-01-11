@@ -13,6 +13,9 @@ export class CurrencyFormatPipe implements PipeTransform {
   }
 
   transform(value: number | string, fractionSize: number = 2): string {
+    if(value === "") { 
+      return value;
+    }
     let [ integer, fraction = "" ] = (value || "").toString()
       .split(this.DECIMAL_SEPARATOR);
 
@@ -20,7 +23,7 @@ export class CurrencyFormatPipe implements PipeTransform {
       ? this.DECIMAL_SEPARATOR + (fraction + PADDING).substring(0, fractionSize)
       : "";
     integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, this.THOUSANDS_SEPARATOR);
-    return "$" + integer + fraction;
+    return integer + fraction;
   }
 
   parse(value: string, fractionSize: number = 2): string {
@@ -31,6 +34,6 @@ export class CurrencyFormatPipe implements PipeTransform {
       ? this.DECIMAL_SEPARATOR + (fraction + PADDING).substring(0, fractionSize)
       : "";
     console.log('int' + integer + fraction);
-    return "$" + integer + fraction;
+    return integer + fraction;
   }
 }

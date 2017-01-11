@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   <h1>SimpleTip</h1>
   <div>
     <label>Subtotal</label>
-    <input type="number" [(ngModel)]="subtotal" (keyup)="subtotalChanged($event)">
+    <input type="number" #isubtotal [(ngModel)]="subtotal" (blur)="subtotalChanged(isubtotal.value)" moneyFormat>
   </div>
   <div>
     <input type="button" (click)="addTax()" [value]="taxTitle">
